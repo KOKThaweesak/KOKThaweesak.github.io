@@ -19,7 +19,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
 	<script src="https://d.line-scdn.net/liff/1.0/sdk.js" /></script>
 
-	<title>VueJS with Go backend, woop!</title>
+	<title>Test SeatsIO</title>
 </head>
 <body>
 <div id="chart"></div>
@@ -31,83 +31,6 @@
         event: 'a0d1b492-8846-4c6e-89c2-5001d06c0ce4'
     }).render();
 </script>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<h2>My Tasks</h2>
-				<ul class="list-group">
-					<li class="list-group-item" v-for="task in tasks">
-						{{ task.name }}
-						<span class="pull-right">
-							<button class="btn btn-xs btn-danger" v-on:click="deleteTask($index)">
-								<i class="fa fa-trash-o" aria-hidden="true"></i>
-							</button>
-						</span>
-					</li>
-				</ul>
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="New Task" v-on:keyup.enter="createTask" v-model="newTask.name">
-					<span class="input-group-btn">
-						<button class="btn btn-primary" type="button" v-on:click="createTask">Create</button>
-					</span>
-				</div>
-				<!-- /input-group -->
-			</div>
-		</div>
-	</div>
-	<script>
-		/*
-		$(window).on('load', function(){
-			liff.init(function (data) {});
-		})
-		*/
-		new Vue({
-			el: 'body',
 
-			data: {
-				tasks: [],
-				newTask: {},
-				baseurl: "https://go-echo-vue-vgu4tcv7ca-uc.a.run.app"
-			},
-
-			// This is run whenever the page is loaded to make sure we have a current task list
-			created: function () {
-				// Use the vue-resource $http client to fetch data from the /tasks route
-				this.$http.get(this.baseurl + '/tasks').then(function (response) {
-					this.tasks = response.data.items ? response.data.items : [];
-				});
-			},
-
-			methods: {
-				createTask: function () {
-					if (!$.trim(this.newTask.name)) {
-						this.newTask = {};
-						return;
-					}
-
-					// Post the new task to the /tasks route using the $http client
-					this.$http.put(this.baseurl + '/tasks', this.newTask).success(function (response) {
-						this.newTask.id = response.created;
-						this.tasks.push(this.newTask);
-						console.log("Task created!");
-						console.log(this.newTask);
-						this.newTask = {};
-					}).error(function (error) {
-						console.log(error);
-					});
-				},
-
-				deleteTask: function (index) {
-					// Use the $http client to delete a task by its id
-					this.$http.delete(this.baseurl + '/tasks/' + this.tasks[index].id).success(function (response) {
-						this.tasks.splice(index, 1);
-						console.log("Task deleted!");
-					}).error(function (error) {
-						console.log(error);
-					})
-				}
-			}
-		})
-	</script>
 </body>
 </html>
