@@ -25,11 +25,21 @@
 <div id="chart"></div>
 <script src="https://cdn.seatsio.net/chart.js"></script>
 <script>
-    new seatsio.SeatingChart({
-        divId: 'chart',
-        publicKey: '95d2bdf7-b3a8-4186-bd5e-6ea41d61e5c4',
-        event: 'a0d1b492-8846-4c6e-89c2-5001d06c0ce4'
-    }).render();
+	var selectedSeats = [];
+	new seatsio.SeatingChart({
+		divId: 'chart',
+		publicKey: '95d2bdf7-b3a8-4186-bd5e-6ea41d61e5c4',
+		event: 'a0d1b492-8846-4c6e-89c2-5001d06c0ce4',
+		onObjectSelected: function (object) {
+        // add the selected seat id to the array
+        selectedSeats.push(object.id);
+    },
+    onObjectDeselected: function (object) {
+        // remove the deselected seat id from the array
+        var index = selectedSeats.indexOf(object.id);
+        if (index !== -1) selectedSeats.splice(index, 1);
+    }
+	}).render();
 </script>
 
 </body>
