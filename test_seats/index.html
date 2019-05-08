@@ -38,7 +38,8 @@
         // remove the deselected seat id from the array
         var index = selectedSeats.indexOf(object.id);
         if (index !== -1) selectedSeats.splice(index, 1);
-    }
+    },
+		holdOnSelect: true
 	}).render();
 </script>
 
