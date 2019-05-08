@@ -40,7 +40,15 @@
         var index = selectedSeats.indexOf(object.id);
         if (index !== -1) selectedSeats.splice(index, 1);
     },
-		holdOnSelect: true
+		holdOnSelect: true,
+		showActionHint: true,
+    showAvailability: false,
+    showCategory: true,
+    showLabel: true,
+    showPricing: true,
+    showUnavailableNotice: true,
+    stylizedLabel: true,
+    confirmSelectionOnMobile: "auto"
 	}).render();
 </script>
 
