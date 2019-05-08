@@ -40,6 +40,9 @@
         var index = selectedSeats.indexOf(object.id);
         if (index !== -1) selectedSeats.splice(index, 1);
     },
+		onObjectClicked: function (object) {
+			console.log(object)
+		},
 		holdOnSelect: true,
 		showActionHint: true,
     showAvailability: true,
