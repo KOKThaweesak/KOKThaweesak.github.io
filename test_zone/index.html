@@ -34,15 +34,14 @@
 		onObjectSelected: function (object) {
         // add the selected seat id to the array
         selectedSeats.push(object.id);
+				console.log(selectedSeats)
     },
     onObjectDeselected: function (object) {
         // remove the deselected seat id from the array
         var index = selectedSeats.indexOf(object.id);
         if (index !== -1) selectedSeats.splice(index, 1);
+				console.log(selectedSeats)
     },
-		onObjectClicked: function (object) {
-			console.log(object)
-		},
 		holdOnSelect: true,
 		showActionHint: true,
     showAvailability: true,
