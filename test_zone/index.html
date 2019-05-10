@@ -33,7 +33,11 @@
 		event: '5721b419-edf1-4adf-9c26-ab8b688c6b54',
 		pricing:[
 			{'category': 'A Section', 'price': 100},
-			{'category': 'B Section', 'price': 200},
+			{'category': 'B Section', 'ticketTypes': [
+                {'ticketType': 'adult', 'price': 200},
+                {'ticketType': 'child', 'price': 100},
+                {'ticketType': '65+', 'price': 100}
+            ]},
 			{'category': 'C Section', 'price': 300}
 		],
 		priceFormatter: function(price) {
